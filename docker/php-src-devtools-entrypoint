@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -e
+
+case "$1" in
+    "build")
+        make -j`nproc`
+        ;;
+    *)
+        echo "Unknown command"
+        exit 2
+        ;;
+esac
