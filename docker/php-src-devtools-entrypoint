@@ -5,6 +5,12 @@ case "$1" in
     "build")
         make -j`nproc`
         ;;
+    "buildconf")
+        ./buildconf
+        ;;
+    "configure")
+        ./configure
+        ;;
     *)
         echo "Unknown command"
         exit 2
