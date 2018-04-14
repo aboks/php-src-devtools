@@ -12,7 +12,7 @@ case "$1" in
         ./configure
         ;;
     "test")
-        make test
+        TESTS="$2" make test
         ;;
     *)
         echo "Unknown command"
