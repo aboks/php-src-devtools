@@ -11,6 +11,9 @@ case "$1" in
     "configure")
         ./configure
         ;;
+    "test")
+        make test
+        ;;
     *)
         echo "Unknown command"
         exit 2
