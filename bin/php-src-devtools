@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -e
+
+function runInContainer()
+{
+    docker run -i -t --rm -v`pwd`:/src/php-src aboks/php-src-devtools:latest "$@"
+}
+
+case "$1" in
+    "build")
+        runInContainer build
+        ;;
+    "test")
+        runInContainer test "${@:2}"
+        ;;
+    *)
+        echo "Unknown command"
+        exit 2
+        ;;
+esac
