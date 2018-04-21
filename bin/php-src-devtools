@@ -13,6 +13,9 @@ case "$1" in
     "test")
         runInContainer test "${@:2}"
         ;;
+    "php")
+        runInContainer run-cli "${@:2}"
+        ;;
     *)
         echo "Unknown command"
         exit 2

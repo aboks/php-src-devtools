@@ -11,18 +11,26 @@ function doConfigure()
 
 function doBuild()
 {
-	if [ ! -f Makefile ]; then
-		doConfigure
-	fi;
-	make -j`nproc`
+    if [ ! -f Makefile ]; then
+        doConfigure
+    fi;
+    make -j`nproc`
 }
 
 function doTest()
 {
-	if [ ! -f Makefile ]; then
+    if [ ! -f Makefile ]; then
         doConfigure
     fi;
     TESTS="$1" make -j`nproc` test
+}
+
+function doRunCli()
+{
+    if [ ! -f sapi/cli/php ]; then
+        doBuild
+    fi;
+    sapi/cli/php "$@"
 }
 
 case "$1" in
@@ -34,6 +42,9 @@ case "$1" in
         ;;
     "test")
         doTest "$1"
+        ;;
+    "run-cli")
+        doRunCli "${@:2}"
         ;;
     *)
         echo "Unknown command"
