@@ -1,18 +1,39 @@
 #!/usr/bin/env bash
 set -e
 
+function doConfigure()
+{
+    if [ ! -f configure ]; then
+        ./buildconf
+    fi
+    ./configure
+}
+
+function doBuild()
+{
+	if [ ! -f Makefile ]; then
+		doConfigure
+	fi;
+	make -j`nproc`
+}
+
+function doTest()
+{
+	if [ ! -f Makefile ]; then
+        doConfigure
+    fi;
+    TESTS="$1" make -j`nproc` test
+}
+
 case "$1" in
     "build")
-        make -j`nproc`
-        ;;
-    "buildconf")
-        ./buildconf
+        doBuild
         ;;
     "configure")
-        ./configure
+        doConfigure
         ;;
     "test")
-        TESTS="$2" make test
+        doTest "$1"
         ;;
     *)
         echo "Unknown command"
