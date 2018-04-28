@@ -41,7 +41,7 @@ case "$1" in
         doConfigure
         ;;
     "test")
-        doTest "$1"
+        doTest "$2"
         ;;
     "run-cli")
         doRunCli "${@:2}"
