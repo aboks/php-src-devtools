@@ -1,23 +1,13 @@
-#!/usr/bin/env bash
-set -e
+#!/usr/bin/env php
+<?php
 
-function runInContainer()
-{
-    docker run -i -t --rm -v`pwd`:/src/php-src aboks/php-src-devtools:latest "$@"
-}
+use Aboks\PhpSrcDevtools\Application;
+use Symfony\Component\Console\Input\ArgvInput;
 
-case "$1" in
-    "build")
-        runInContainer build
-        ;;
-    "test")
-        runInContainer test "${@:2}"
-        ;;
-    "php")
-        runInContainer run-cli "${@:2}"
-        ;;
-    *)
-        echo "Unknown command"
-        exit 2
-        ;;
-esac
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$input = new ArgvInput();
+$input->setStream(STDIN);
+
+$application = new Application();
+$application->run($input);

@@ -1,0 +1,21 @@
+{
+    "name": "aboks/php-src-devtools",
+    "description": "Tools to make it easier to build, run and test PHP from source, using Docker",
+    "require": {
+        "php": "^7.1",
+        "symfony/console": "^4.0",
+        "symfony/process": "^4.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arnout Boks",
+            "email": "arnoutboks@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Aboks\\PhpSrcDevtools\\": "src/"
+        }
+    }
+}
