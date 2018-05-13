@@ -17,5 +17,8 @@
         "psr-4": {
             "Aboks\\PhpSrcDevtools\\": "src/"
         }
-    }
+    },
+    "bin": [
+        "bin/php-src-devtools"
+    ]
 }
