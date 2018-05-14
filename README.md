@@ -22,6 +22,8 @@ This project aims to remove some of these barriers for PHP developers to become 
 * Using tools that PHP developers might be already using (Symfony Console and Docker) provides a familiar experience.
 * The console application abstracts some of the necessary build steps away, and makes the possible actions discoverable.
 
+For more information about contributing to PHP, see the slides for my "[Getting started with PHP core development](https://speakerdeck.com/aboks/getting-started-with-php-core-development-phpce-2017)" conference talk.
+
 Prerequisites
 -------------
 Ensure that [Docker](https://www.docker.com/get-docker) is installed and running on your system. 
